@@ -39,7 +39,7 @@ export default class UsersDAO {
   static async getUser(email) {
     // TODO Ticket: User Management
     // Retrieve the user document corresponding with the user's email.
-    return await users.findOne({ email:  email })
+    return await users.findOne({ email: email })
   }
 
   /**
@@ -60,7 +60,7 @@ export default class UsersDAO {
       // Insert a user with the "name", "email", and "password" fields.
       // TODO Ticket: Durable Writes
       // Use a more durable Write Concern for this operation.
-      await users.insertOne({ ...userInfo})
+      await users.insertOne({ ...userInfo })
       return { success: true }
     } catch (e) {
       if (String(e).startsWith("MongoError: E11000 duplicate key error")) {
@@ -84,8 +84,8 @@ export default class UsersDAO {
       // matching the "user_id" field with the email passed to this function.
       await sessions.updateOne(
         { user_id: email },
-        { $set: { jwt: jwt}},
-        { upsert: true}
+        { $set: { jwt: jwt } },
+        { upsert: true },
       )
       return { success: true }
     } catch (e) {
