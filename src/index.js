@@ -23,7 +23,7 @@ concern timeout limit to 2500 milliseconds.
 MongoClient.connect(
   process.env.MFLIX_DB_URI,
   // new JD code:
-  { poolSize: 50, useNewUrlParser: true },
+  { poolSize: 50, useNewUrlParser: true, wtimeout: 2500 },
   // TODO: Connection Pooling
   // Set the poolSize to 50 connections.
   // TODO: Timeouts
